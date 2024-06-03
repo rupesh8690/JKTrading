@@ -1,0 +1,115 @@
+<% layout("layout/boilerplate.ejs") %>
+
+<style>
+
+</style>
+<% if(categories_result && categories_result.length > 0) { %>
+<table class="table table-hover table-bordered offset-lg-3 offset-md-3 category-table">
+  <thead>
+    <tr>
+      <th scope="col">SNo.</th>
+      <th scope="col">Category Name</th>
+      <th scope="col" colspan="2" class="text-center">Operation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i = 0; i < categories_result.length; i++) { %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= categories_result[i].category %></td>
+
+      <td class="text-center">
+        <a
+          href="/category/<%= categories_result[i].id %>/delete"
+          class="delete-category"
+          ><i class="fa-solid fa-trash"></i
+        ></a>
+      </td>
+      <td class="text-center">
+        <a
+          href=""
+          class="edit-category"
+          data-category="<%= categories_result[i].category %>"
+          data-id="<%= categories_result[i].id %>"
+          ><i class="fa-solid fa-edit"></i
+        ></a>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+<% } else { %>
+<div
+  class="d-flex justify-content-center align-items-center"
+  style="height: 100vh; color: #fe424d"
+>
+  <h1>No Categories found!</h1>
+</div>
+<% } %>
+
+<hr />
+
+<div class="row">
+  <div class="col-8 offset-lg-3">
+    <h3 class="edit-category-title">Edit Category</h3>
+    <form
+      id="edit-category-form"
+      method="post"
+      class="needs-validation"
+      enctype="multipart/form-data"
+      novalidate
+    >
+      <div class="mb-3  w-sm-100 w">
+        <input
+          type="text"
+          name="newCategory"
+          class="form-control"
+          id="edit-category-input"
+          disabled
+          required
+        />
+        <div class="invalid-feedback">Category should be valid</div>
+      </div>
+
+      <button class="btn btn-dark add-btn mb-3 updateBtn" disabled>Update</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".edit-category").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      let categoryName = button.dataset.category;
+      let categoryId = button.dataset.id;
+
+      //activating and decativating of update button
+      let newCategory = document.getElementById("edit-category-input");
+      if (newCategory.disabled) {
+        newCategory.disabled = false;
+       
+      } 
+
+      let updateBtn = document.querySelector(".updateBtn");
+      if (updateBtn.disabled) {
+        updateBtn.disabled = false;
+       
+      } 
+
+      document.getElementById("edit-category-input").value = categoryName;
+      document
+        .getElementById("edit-category-form")
+        .setAttribute("data-id", categoryId);
+    });
+  });
+
+  document
+    .getElementById("edit-category-form")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      let newCategory = document.getElementById("edit-category-input").value;
+      let categoryId = this.getAttribute("data-id");
+      this.action = `/category/${categoryId}/${newCategory}?_method=PUT`;
+      this.submit();
+    });
+</script>

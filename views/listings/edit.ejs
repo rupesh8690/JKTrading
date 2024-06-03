@@ -1,0 +1,98 @@
+<% layout("layout/boilerplate.ejs") %>
+
+
+<div class="row mt-3">
+  <div class="col-md-8 col-sm-12 offset-lg-2">
+    
+    <form
+      action="/listings/<%= result.id %>?_method=PUT"
+      method="post"
+      enctype="multipart/form-data"
+    >
+
+      <h3>Edit your Item</h3>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          name="listing[title]"
+          value="<%= result.title %>"
+          class="form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">description</label>
+        <textarea name="listing[description]" class="form-control">
+          <%= result.description %></textarea
+        >
+      </div>
+
+      <div class="mb-3">
+        Original Listing image <br />
+        <img src="<%= originalImageUrl %>" width="300" height="150" />
+      </div>
+
+      <div class="mb-3">
+        <label for="Image" class="form-label">Image</label>
+        <input type="file" name="listing[image]" class="form-control" />
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="Price" class="form-label">Price</label>
+          <input
+            type="number"
+            name="listing[price]"
+            value="<%= result.price %>"
+            class="form-control"
+          />
+        </div>
+
+     
+
+        <div class="mb-3 col-md-8">
+          <label for="status" class="form-label">Status</label>
+          <select
+            name="listing[status]"
+            id="status"
+            class="form-control"
+          >
+            <option value="stock" <%= result.status === 'stock' ? 'selected' : '' %>>Stock</option>
+            <option value="outofstock" <%= result.status === 'outofstock' ? 'selected' : '' %>>Out of Stock</option>
+          </select>
+        </div>
+      </div>
+        
+
+      <div class="mb-3">
+        <label for="Keywords" class="form-label">Keywords</label>
+        <input
+          type="text"
+          name="listing[keywords]"
+          value="<%= result.keywords %>"
+          class="form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select
+          name="listing[category]"
+          class="form-select edit-select"
+          aria-label="Default select example"
+        >
+          <option selected disabled value="">Categories</option>
+          <% for(let cat of allCategory) { %>
+          <option value="<%= cat._id %>" <%= cat._id.toString() === result.category.toString() ? 'selected' : '' %>><%= cat.category %></option>
+          <% } %>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-dark add-btn">Submit</button>
+      </div>
+
+    </form>
+  </div>
+</div>

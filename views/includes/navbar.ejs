@@ -1,0 +1,217 @@
+<style>
+  .btn-search {
+    background-color: #fe424d;
+    color: white;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+  .btn-search:hover {
+    background-color: #fe424d;
+    color: white;
+  }
+  .btn-search i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+  .search-input {
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    font-size: 1rem;
+  }
+  .navbar-collapse {
+    z-index: 1000; /* Adjust as needed */
+  }
+
+  .navbar-toggler {
+    border: none;
+    outline: none;
+  }
+
+  .navbar-toggler:focus,
+  .navbar-toggler:active {
+    border: none;
+    outline: none;
+    box-shadow: none; /* To remove any default box shadow */
+  }
+
+  .form-select {
+    border: none !important;
+    outline: none !important;
+  }
+
+  .form-select:active {
+    border: none !important;
+    outline: none !important;
+  }
+  .add-cat-btn{
+    background-color: #ACD793 !important;
+    color: black !important;
+  }
+  .cancel-cat-btn{
+    background-color: #EEF7FF !important;
+    color: black !important;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <!--border-botom class is used to show bootom border line and sticky top is used to fix the navbar at the top-->
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"
+      ><i class="fa-solid fa-compass"></i
+    ></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fa-solid fa-bars" id="toggleNavbar"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">JNK Trading & Contracting</a>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <form
+          class="d-flex needs-validation"
+          role="search"
+          action="/search"
+          method="get"
+          novalidate
+        >
+          <input
+            class="form-control me-2 search-input"
+            type="search"
+            placeholder="Search Items"
+            name="q"
+            required
+          />
+          <div class="invalid-feedback">Enter Location First!</div>
+
+          <button class="btn btn-search" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+          </button>
+        </form>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <!--ms-auto is used to shift this nav items to right-->
+        <a class="nav-link" href="/about">About us</a>
+
+        <% if(!currUser) { %>
+
+        
+        <a class="nav-link" href="/login"><b>Admin</b></a>
+
+        <% } %>
+        <!--check this currUser in app.js -->
+        <% if(currUser) { %>
+       
+        <a class="nav-link" href="/listings/new">Add Items</a>
+        <a class="nav-link" href="/contact/inquiries">Inquiries</a>
+        <a class="nav-link" href="/signup"><b>Sign up</b></a>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Categories
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                href="#"
+                >Add Category</a
+              >
+            </li>
+            <li><a class="dropdown-item" href="/category/view">Edit and Delete</a></li>
+          </ul>
+        </li>
+
+        <a class="nav-link" href="/logout">Logout</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- for toggling effect on navbar -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const icon = document.querySelector("#toggleNavbar");
+    const navbarCollapse = document.querySelector("#navbarNavAltMarkup");
+
+    navbarCollapse.addEventListener("shown.bs.collapse", function () {
+      icon.classList.remove("fa-bars");
+      icon.classList.add("fa-xmark");
+    });
+
+    navbarCollapse.addEventListener("hidden.bs.collapse", function () {
+      icon.classList.remove("fa-xmark");
+      icon.classList.add("fa-bars");
+    });
+  });
+</script>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          Insert the category
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          class="needs-validation"
+          action="/category"
+          method="POST"
+          novalidate
+        >
+          <div class="mb-3">
+            <label for="category" class="form-label">Category Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputCategory"
+              name="title"
+              aria-describedby="categoryHelp"
+              required
+            />
+            <div class="invalid-feedback">Please provide a valid category</div>
+          </div>
+
+          <button type="button" class="btn cancel-cat-btn" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn add-cat-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

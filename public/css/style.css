@@ -1,0 +1,220 @@
+body{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+.container{
+    flex: 1;
+}
+.navbar{
+    /* height: 5rem; */
+    background-color: white; 
+    /* item scroll garda item navbar samma pugne problme le garda background color white dieko ho  */
+}
+.fa-compass{
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link{
+    color:#222222 !important;
+    /* if we want to override the style or attribute provided by bootstrap we use !important */
+
+    
+}
+/*--footer ---*/
+.f-info-links a  {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover  {
+    text-decoration: underline;
+    
+}
+
+
+.f-info-socials i{
+    font-size: 1.2rem;
+ 
+    margin-left: 1.2rem;
+
+   
+}
+.f-info-links,
+.f-info-brands,
+.f-info-socials
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+   
+    
+}
+.f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+    
+}
+
+/* card */
+
+.index-card{
+    /* border: none !important; */
+    /* border: 1px solid #ccc !important; */
+    margin-bottom: 2rem ;
+    
+}
+
+.show-card{
+    border: none !important;
+}
+.card-img-top{
+    border-radius: 1rem !important; 
+    /* max-width: 90% !important;
+    max-height: 80% !important; */
+    padding-top: 1rem !important;
+    object-fit: contain !important;
+    object-position: center !important;
+ }
+ 
+  
+
+.unit-cost{
+    /* padding-left: 4rem !important; */
+    text-align: center !important;
+}
+
+.card-text p{
+    font-weight: 400 !important;
+   
+    
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+
+/* card effect */
+
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+.add-btn {
+    background-color:  #fe424d !important;
+    border: none !important;
+}
+
+/*show */
+.show-img{
+    height: 25vh;
+    /* background-size: cover !important; */
+    width: 10rem !important;
+    
+
+}
+
+.btns{
+    display: flex;
+}
+.btns .add-btn {
+    padding: 0.35rem 1.25rem 0 1rem;
+
+}
+
+/* map */
+#map {
+   
+    
+     height: 20rem;
+}
+
+/* button of login and sign up */
+.btn-login, .btn-signup {
+    background-color:  #fe424d !important;
+    border: none !important;
+}
+
+/* for login box */
+.password-box {
+    position: relative;
+  }
+
+  .password-box i {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+
+ /* for category.ejs */
+ .category-table {
+    width: 50%;
+    margin-top: 3rem !important;
+  }
+
+  @media (max-width: 576px) {
+    .category-table {
+      width: 100%;
+    }
+  }
+
+  .fa-trash {
+    color: red;
+  }
+  .fa-edit {
+    color: green;
+  }
+
+  /* for edit.ejs */
+  .edit-select {
+    border: 1px solid #ced4da !important; /* Default Bootstrap border color */
+  }
+
+  /* for index.ejs */
+  .home-page {
+    width: 100%;
+    height: 30rem;
+}
+
+@media (max-width: 576px) {
+    .home-page {
+        height: 15rem;
+    }
+}
+
+  .text-justify {
+    text-align: justify;
+  }
+ 
+  #mySelect {
+    font-size: 1.25rem;
+    border: 2px solid #000 !important; /* Change the color and width as needed */
+    border-radius: 4px; /* Optional: adds rounded corners */
+    padding: 0.375rem 0.75rem; /* Optional: adjust padding for better appearance */
+}
+
+.row-cols-lg-5 p{
+    font-size: 0.75rem !important;
+}
+
+/* for new.ejs */
+.cat-select {
+    border: 1px solid #ced4da !important; /* Default Bootstrap border color */
+  }

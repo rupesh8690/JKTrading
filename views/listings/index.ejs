@@ -1,0 +1,90 @@
+<% layout("layout/boilerplate.ejs") %>
+
+<div class="col-lg-12 mb-3">
+ 
+  <img src="../images/home-page.png" alt="" class="home-page">
+</div>
+
+
+
+<div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-12">
+    <form id="categoryForm" action="" method="GET">
+      <select
+        class="form-select w-50"
+        aria-label="Default select example"
+        id="mySelect"
+        name="category"
+      >
+        <option selected>Categories</option>
+        <% for(let cat of allCategory) { %>
+        <option value="<%= cat._id %>"><%= cat.category %></option>
+        <% } %>
+      </select>
+    </form>
+  </div>
+</div>
+<hr />
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const selectElement = document.getElementById("mySelect");
+
+  selectElement.addEventListener("change", function () {
+    const selectedValue = selectElement.value;
+    //selectedValue !== "listings" is added to ensure that the selected value is not equal to "listings".
+    if (selectedValue && selectedValue !== "listings") {
+      // Construct the new URL
+      const newUrl = `${window.location.origin}/search/${selectedValue}`;
+      // Redirect to the new URL
+      window.location.href = newUrl;
+    }
+  });
+});
+
+</script>
+
+<h3 class="text-center">Welcome to JNK Trading</h3>
+<div class="container main-content">
+  <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-2 mt-3">
+    <% for(let listing of allListing) { %>
+    <a href="/listings/<%= listing.id %>" class="listing-link">
+      <div class="card col listing-card index-card">
+        <!--col class is used to present cart in column form-->
+        <img
+          src="<%= listing.image.url%>"
+          class="card-img-top"
+          alt="listing_image"
+          style="height: 10rem"
+        />
+        <!--image overlay for card-->
+        <div class="card-img-overlay text-white"></div>
+        <div class="card-body unit-cost">
+          <p class="card-text">
+            <b><%= listing.title %></b> <br />
+            &#8377; <%= listing.price.toLocaleString("en-IN") %>/per unit
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } %>
+  </div>
+</div>
+
+
+<!-- <form action="/listings/new" method="GET">
+        <button>Create new listing</button>
+    </form> -->
+
+<br />
+
+<!-- map -->
+<div class="col-lg-12 mb-3">
+  <div id="map"></div>
+</div>
+<!-- js for map -->
+<script src="/js/map.js"></script>
+
+
+

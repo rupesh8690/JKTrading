@@ -1,0 +1,40 @@
+<% layout("layout/boilerplate.ejs") %>
+
+<div class="row mt-3 overflow-x-hidden">
+    <div class="col-md-8 offset-2">
+         <h3><%= listing.title %></h3>
+    </div>
+
+    <div class="card col-lg-6 col-md-8 col-sm-12 offset-lg-2  listing-card show-card">
+        <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
+        <i>*Disclaimer: images shown are for illustrations purposes only, actual product may vary from the image shown.</i>
+
+        <div class="card-body">
+        
+            <i><u>JNK TRADING</u></i> <hr>
+          <p class="card-text text-justify">Description :<%= listing.description %>   </p>
+          <p class="card-text">Price: &#8377 <%= listing.price.toLocaleString("en-IN") %> /Unit </p>
+          <p class="card-text">Status:  <%= listing.status %></p>
+          <p class="card-text">Product Id:  <%= listing.productId %></p>
+          <p class="card-text">To get this product call at : +97431649023</p>
+          <a href="https://www.facebook.com/rupesh.love.9/" >Direct Message to: <i class="fa-brands fa-facebook"></i></a>
+          
+        </div>
+    </div>
+    <br>
+
+    <!--checking whether current user id and owner id are equal or not-->
+    <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
+    <div class="btns mb-2 mt-3">
+        <a href="/listings/<%= listing.id %>/edit" class="btn btn-dark offset-2 add-btn">Edit</a> <!--apply 1 column out of the total 12 columns -->
+        <form action="/listings/<%= listing.id %>?_method=DELETE" method="post">
+            <button  class="btn btn-dark offset-2">Delete</button>
+        </form>
+    
+       
+    </div>
+    
+    <% } %>
+</div>
+
+

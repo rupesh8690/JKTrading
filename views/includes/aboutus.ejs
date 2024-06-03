@@ -1,0 +1,110 @@
+<% layout("layout/boilerplate.ejs") %>
+<style>
+  .about-image {
+    box-sizing: border-box;
+    width: 100%;
+    object-fit: contain;
+  }
+</style>
+<div class="row mt-3 mb-5">
+  <h2 class="text-center mt-2">About us</h2>
+  <div class="col-lg-8 col-md-8 col-sm-12">
+    <img src="./images/about-us.jpg" alt="no fonud" class="about-image" />
+  </div>
+
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <p class="text-justify">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
+      distinctio exercitationem ipsa magnam placeat pariatur qui deserunt nulla
+      quod natus rerum dicta dolores nobis facere, unde tenetur minus sint ea!
+      Laboriosam nobis hic reiciendis non ratione nulla vero in praesentium
+      nesciunt quia, impedit saepe. Labore, earum ducimus. Ratione architecto
+      magnam ducimus eum atque commodi nam, ut maiores accusantium? Molestiae,
+      est. Ex excepturi consectetur ullam unde sunt distinctio qui totam
+      blanditiis sequi deserunt porro asperiores id reprehenderit iure hic
+      dolore eos quia, pariatur molestias? Exercitationem voluptas molestiae
+      distinctio delectus repudiandae minus. Quibusdam, delectus distinctio?
+      Quos est ratione incidunt obcaecati pariatur odio nemo velit voluptatem
+      eligendi? Soluta delectus, vitae autem illo ex modi amet reiciendis nisi
+      illum at, quae saepe non dolor?
+    </p>
+  </div>
+</div>
+<hr />
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+    <h1 class="text-center">Contact us</h1>
+    <h3 class="text-center">Get in touch</h3>
+
+    <form action="/contact" method="POST" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="name" class="form-label">Your Name</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter name"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Enter your name</div>
+        <div class="valid-feedback">Name looks good</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="contactNo" class="form-label">Your Contact Number</label>
+        <input
+          type="text"
+          name="contactNo"
+          placeholder="Enter Contact Number"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Enter a valid contact number</div>
+        <div class="valid-feedback">Contact number looks good</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter Email"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Please provide a valid email</div>
+        <div class="valid-feedback">Email looks good</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="subject" class="form-label">Subject</label>
+        <input
+          type="text"
+          name="subject"
+          placeholder="Enter subject"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Subject should be valid</div>
+        <div class="valid-feedback">Subject looks good</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="message" class="form-label">Your Message</label>
+        <textarea
+          class="form-control"
+          name="message"
+          id="message"
+          rows="3"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Mention your message</div>
+        <div class="valid-feedback">Message looks good</div>
+      </div>
+
+      <button class="btn btn-dark add-btn mb-3 text-center">
+        Send &nbsp; &nbsp;<i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </form>
+  </div>
+</div>

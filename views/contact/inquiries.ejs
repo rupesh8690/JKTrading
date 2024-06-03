@@ -1,0 +1,35 @@
+<% layout("layout/boilerplate.ejs") %>
+<% if(inquiries && inquiries.length > 0) { %>
+
+      <div class="table-responsive mt-4">
+        <table class="table table-bordered table-sm table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Contact No</th>
+              <th scope="col">Email</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Message</th>
+              <th scope="col">Operation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let inquiry of inquiries) { %>
+              <tr>
+                <td><%= inquiry.name %></td>
+                <td><%= inquiry.contactNo %></td>
+                <td><%= inquiry.email %></td>
+                <td><%= inquiry.subject %></td>
+                <td><%= inquiry.message %></td>
+                <td><a href="/contact/<%= inquiry.id %>/delete"><i class="fa-solid fa-trash"></i></a></td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+
+<% } else { %>
+  <div class="d-flex justify-content-center align-items-center" style="height: 100vh; color: #fe424d;">
+    <h1>No Inquiries</h1>
+  </div>
+<% } %>
