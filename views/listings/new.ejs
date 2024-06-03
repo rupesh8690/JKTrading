@@ -1,5 +1,9 @@
 <% layout("layout/boilerplate.ejs") %>
-
+<style>
+  .select-cat {
+    border: 1px solid #ced4da !important; /* Default Bootstrap border color */
+  }
+</style>
 
 <div class="row mt-3">
   <div class="col-8 offset-2">
@@ -90,7 +94,7 @@
       <div class="mb-3">
         <select
           name="listing[category]"
-          class="form-select cat-select"
+          class="form-select select-cat"
           aria-label="Default select example"
         >
           <option selected disabled>Categories</option>

@@ -215,6 +215,6 @@ body{
 }
 
 /* for new.ejs */
-.cat-select {
+.select-cat {
     border: 1px solid #ced4da !important; /* Default Bootstrap border color */
   }
