@@ -51,14 +51,19 @@
     background-color: #EEF7FF !important;
     color: black !important;
   }
+
+ .fa-globe{
+  color: #fe424d !important;
+ }
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <!--border-botom class is used to show bootom border line and sticky top is used to fix the navbar at the top-->
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings"
-      ><i class="fa-solid fa-compass"></i
-    ></a>
+      > 
+      <i class="fa-solid fa-globe"></i>
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -91,7 +96,7 @@
             name="q"
             required
           />
-          <div class="invalid-feedback">Enter Location First!</div>
+          <div class="invalid-feedback">Enter Item's name!</div>
 
           <button class="btn btn-search" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>Search
