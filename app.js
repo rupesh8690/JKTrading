@@ -136,6 +136,11 @@ app.use("/contact",contact);
 app.get("/about" ,(req,res) =>{
   res.render("./includes/aboutus");
 })
+
+app.get('/', (req, res) => {
+  res.redirect('/listings');
+});
+
 app.all("*",(req,res,next) => {
   next(new ExpressError(404, "Page not found!"));
 
