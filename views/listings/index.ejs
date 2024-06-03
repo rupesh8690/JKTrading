@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="card-body unit-cost">
           <p class="card-text">
             <b><%= listing.title %></b> <br />
-            &#8377; <%= listing.price.toLocaleString("en-IN") %>/per unit
+            ر.ق <%= (listing.price * conversionRate).toLocaleString("en-IN") %>/per unit
           </p>
         </div>
       </div>
